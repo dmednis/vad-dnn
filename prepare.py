@@ -13,7 +13,7 @@ def speech(time, vad_labels):
 
 
 def load_raw_labels():
-    labels_filename = 'raw/vad-16.txt'
+    labels_filename = 'raw/labels4.txt'
     vad_labels = list()
     with open(labels_filename, 'r') as f:
         reader = csv.reader(f, delimiter='\t')
@@ -26,7 +26,7 @@ def load_raw_labels():
 
 raw_labels = load_raw_labels()
 
-audio_filename = 'raw/audio-16.mp3'
+audio_filename = 'raw/audio4mono.wav'
 data, sr = librosa.load(audio_filename)
 audio_len = len(data) / sr
 
@@ -45,8 +45,8 @@ while i < len(data):
     i += 1024
 
 
-numpy.save('data/audio-16.npy', audio)
-numpy.save('data/vad-16.npy', labels)
+numpy.save('data/audio4.npy', audio)
+numpy.save('data/vad4.npy', labels)
 print('DONE')
 
 

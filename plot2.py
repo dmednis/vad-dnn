@@ -4,14 +4,15 @@ from matplotlib import pyplot as plt
 import numpy as np
 import librosa
 
-data, fs = librosa.load('raw/audio4mono.wav')
-
+data, fs = librosa.load('raw/voice/TEST_DR1_FAKS0_SA1.WAV')
+print(fs)
 fft_size = 1024
 overlap_fac = 0.5
 
-data = data / np.max(data)
+# data = data / np.max(data)
 
-hop_size = np.int32(np.floor(fft_size * (1 - overlap_fac)))
+# hop_size = np.int32(np.floor(fft_size * (1 - overlap_fac)))
+hop_size = np.int32(fs / 100)
 pad_end_size = fft_size  # the last segment can overlap the end of the data array by no more than one window size
 total_segments = np.int32(np.ceil(len(data) / np.float32(hop_size)))
 t_max = len(data) / np.float32(fs)
@@ -37,6 +38,6 @@ for i in range(total_segments):  # for each segment
 
 result = 20 * np.log10(result)  # scale to db
 # result = np.clip(result, -40, 200)  # clip values
-
+print(result.shape)
 img = plt.imshow(result, origin='lower', cmap='jet', interpolation='nearest', aspect='auto')
 plt.show()

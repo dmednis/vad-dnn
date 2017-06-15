@@ -1,1 +1,2 @@
-# speaker-segmentation-dnn
+# vad-dnn
+

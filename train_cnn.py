@@ -101,7 +101,6 @@ def generate_one_hot(count, true):
     return ohs
 
 
-
 def normalize(data):
     min_max_scaler = preprocessing.MinMaxScaler()
     normalised = min_max_scaler.fit_transform(data)
@@ -157,7 +156,7 @@ def main(unused_argv):
         x=x_,
         y=y_,
         batch_size=80,
-        steps=1300,
+        steps=5000,
         monitors=[logging_hook])
 
     # Configure the accuracy metric for evaluation
